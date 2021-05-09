@@ -1,0 +1,17 @@
+body {
+  background-image: url(../img/bg.jpg);
+  color: aliceblue;
+}
+
+form {
+  width: 80%;
+  padding-top: 2em;
+}
+
+th {
+  font-weight: 20px;
+}
+
+.delBtn:hover{
+cursor: pointer;
+}
