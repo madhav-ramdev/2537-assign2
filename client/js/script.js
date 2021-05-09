@@ -20,11 +20,11 @@ $(document).ready(function () {
                 for (let i = 0; i < data.rows.length; i++) {
                     let row = data.rows[i];
                     newRow += ("<tr><td class='userID'>" + row.userID +
-                        "</td><td class='userName'>" + row.userName +
-                        "</td><td class='location'>" + row.location +
-                        "</td><td class='gasBool'><span>" + row.gasBool +
-                        "</span></td><td class='emission'>" + row.emission +
-                        "</td><td id = '" + row.userID + "' class='delBtn' onClick='clickFunction(" + row.userID + ")'><span>╳</span> </td></tr>");
+                        "</td><td class='userName'><span>" + row.userName +
+                        "</span></td><td class='location'><span>" + row.location +
+                        "</span></td><td class='gasBool'><span>" + row.gasBool +
+                        "</span></td><td class='emission'><span>" + row.emission +
+                        "</span></td><td id = '" + row.userID + "' class='delBtn' onClick='clickFunction(" + row.userID + ")'><span>╳</span> </td></tr>");
                 }
                 newRow += "</table>";
                 $("#container").html(newRow);
@@ -285,7 +285,7 @@ $(document).ready(function () {
                     };
 
                     $.ajax({
-                        url: "update-user",
+                        url: "update-userBool",
                         dataType: "json",
                         type: "POST",
                         data: dataToServer,
@@ -302,6 +302,174 @@ $(document).ready(function () {
             });
         }
     });
+
+    $('#container').on('click', 'span', function () {
+
+        if ($(this).parent().attr('class') === 'userName') {
+            let spanText = $(this).text();
+            let td = $(this).parent();
+            let input = $("<input type='text' value='" + spanText + "'>");
+
+            td.html(input);
+            $(input).keyup(function (e) {
+                let val = null;
+                let span = null;
+                if (e.which == 13) {
+                    val = $(input).val();
+                    span = $("<span>" + val + "</span>");
+                    td.html(span);
+
+                    console.log(td.parent().find("[class='userID']")[0]);
+
+                    let dataToServer = {
+                        id: td.parent().find("[class='userID']").html(),
+                        userName: val
+                    };
+
+                    $.ajax({
+                        url: "update-userName",
+                        dataType: "json",
+                        type: "POST",
+                        data: dataToServer,
+                        success: function (data) {
+                            $("#requestStatus").html("The data was updated on the database.");
+                            getUsers();
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            $("#p2").text(jqXHR.statusText);
+                            console.log("ERROR:", jqXHR, textStatus, errorThrown);
+                        }
+                    });
+                }
+            });
+        }
+    });
+
+    $('#container').on('click', 'span', function () {
+
+        if ($(this).parent().attr('class') === 'location') {
+            let spanText = $(this).text();
+            let td = $(this).parent();
+            let input = $("<input type='text' value='" + spanText + "'>");
+
+            td.html(input);
+            $(input).keyup(function (e) {
+                let val = null;
+                let span = null;
+                if (e.which == 13) {
+                    val = $(input).val();
+                    span = $("<span>" + val + "</span>");
+                    td.html(span);
+
+                    console.log(td.parent().find("[class='userID']")[0]);
+
+                    let dataToServer = {
+                        id: td.parent().find("[class='userID']").html(),
+                        location: val
+                    };
+
+                    $.ajax({
+                        url: "update-userLocation",
+                        dataType: "json",
+                        type: "POST",
+                        data: dataToServer,
+                        success: function (data) {
+                            $("#requestStatus").html("The data was updated on the database.");
+                            getUsers();
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            $("#p2").text(jqXHR.statusText);
+                            console.log("ERROR:", jqXHR, textStatus, errorThrown);
+                        }
+                    });
+                }
+            });
+        }
+    });
+
+    $('#container').on('click', 'span', function () {
+
+        if ($(this).parent().attr('class') === 'emission') {
+            let spanText = $(this).text();
+            let td = $(this).parent();
+            let input = $("<input type='text' value='" + spanText + "'>");
+
+            td.html(input);
+            $(input).keyup(function (e) {
+                let val = null;
+                let span = null;
+                if (e.which == 13) {
+                    val = $(input).val();
+                    span = $("<span>" + val + "</span>");
+                    td.html(span);
+
+                    console.log(td.parent().find("[class='userID']")[0]);
+
+                    let dataToServer = {
+                        id: td.parent().find("[class='userID']").html(),
+                        emission: val
+                    };
+
+                    $.ajax({
+                        url: "update-userEmission",
+                        dataType: "json",
+                        type: "POST",
+                        data: dataToServer,
+                        success: function (data) {
+                            $("#requestStatus").html("The data was updated on the database.");
+                            getUsers();
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            $("#p2").text(jqXHR.statusText);
+                            console.log("ERROR:", jqXHR, textStatus, errorThrown);
+                        }
+                    });
+                }
+            });
+        }
+    });
+
+    // $('#container').on('click', 'span', function () {
+
+    //     if ($(this).parent().attr('class') === 'gasBool') {
+    //         let spanText = $(this).text();
+    //         let td = $(this).parent();
+    //         let input = $("<input type='text' value='" + spanText + "'>");
+
+    //         td.html(input);
+    //         $(input).keyup(function (e) {
+    //             let val = null;
+    //             let span = null;
+    //             if (e.which == 13) {
+    //                 val = $(input).val();
+    //                 span = $("<span>" + val + "</span>");
+    //                 td.html(span);
+
+    //                 console.log(td.parent().find("[class='userID']")[0]);
+
+    //                 let dataToServer = {
+    //                     id: td.parent().find("[class='userID']").html(),
+    //                     gasBool: val
+    //                 };
+
+    //                 $.ajax({
+    //                     url: "update-user",
+    //                     dataType: "json",
+    //                     type: "POST",
+    //                     data: dataToServer,
+    //                     success: function (data) {
+    //                         $("#requestStatus").html("The data was updated on the database.");
+    //                         getUsers();
+    //                     },
+    //                     error: function (jqXHR, textStatus, errorThrown) {
+    //                         $("#p2").text(jqXHR.statusText);
+    //                         console.log("ERROR:", jqXHR, textStatus, errorThrown);
+    //                     }
+    //                 });
+    //             }
+    //         });
+    //     }
+    // });
 
     // $('#submit-btn').click(function (e) {
     //     e.preventDefault(); 

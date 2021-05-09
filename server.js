@@ -155,7 +155,7 @@ app.post('/delete-all-users', function (req, res) {
 
 });
 
-app.post('/update-user', function (req, res) {
+app.post('/update-userBool', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
   let connection = mysql.createConnection({
@@ -168,6 +168,89 @@ app.post('/update-user', function (req, res) {
 
   connection.query('UPDATE appUser SET gasBool = ? WHERE userID = ?',
     [req.body.gasBool, req.body.id],
+    function (error, results, fields) {
+      if (error) {
+        throw error;
+      }
+      console.log('Rows returned are: ', results);
+      res.send({
+        status: "success",
+        msg: "Recorded updated."
+      });
+
+    });
+  connection.end();
+
+});
+app.post('/update-userName', function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'assignment'
+  });
+  connection.connect();
+
+  connection.query('UPDATE appUser SET userName = ? WHERE userID = ?',
+    [req.body.userName, req.body.id],
+    function (error, results, fields) {
+      if (error) {
+        throw error;
+      }
+      console.log('Rows returned are: ', results);
+      res.send({
+        status: "success",
+        msg: "Recorded updated."
+      });
+
+    });
+  connection.end();
+
+});
+
+app.post('/update-userLocation', function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'assignment'
+  });
+  connection.connect();
+
+  connection.query('UPDATE appUser SET location = ? WHERE userID = ?',
+    [req.body.location, req.body.id],
+    function (error, results, fields) {
+      if (error) {
+        throw error;
+      }
+      console.log('Rows returned are: ', results);
+      res.send({
+        status: "success",
+        msg: "Recorded updated."
+      });
+
+    });
+  connection.end();
+
+});
+
+app.post('/update-userEmission', function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'assignment'
+  });
+  connection.connect();
+
+  connection.query('UPDATE appUser SET emission = ? WHERE userID = ?',
+    [req.body.emission, req.body.id],
     function (error, results, fields) {
       if (error) {
         throw error;
