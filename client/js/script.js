@@ -12,8 +12,8 @@ $(document).ready(function () {
                 <th class="id_header"><span>ID</span></th>
                 <th class="name_header"><span>Name</span></th>
                 <th class="location_header"><span>Location</span></th>
-                <th class="gas_header"><span>Gas Vehicle (Yes or No)</span></th>
-                <th class="emissions_header"><span>Emission Count</span></th>
+                <th class="gas_header"><span>Gas Vehicle (Yes / No)</span></th>
+                <th class="emissions_header"><span>Emission Count (in CO2 tons)</span></th>
                 <th class="delete_header"><span>Click to Delete</span></th>
                 </tr>`;
 
@@ -390,8 +390,6 @@ $(document).ready(function () {
     $(document).on('click', '.delBtn', function(){
 
         let deleteButton = $(this);
-
-        console.log(deleteButton.attr('id'));
 
         let dataToServer = {
             userID: deleteButton.attr('id')
