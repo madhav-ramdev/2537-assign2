@@ -13,27 +13,26 @@
 
 <body>
 
+  <nav class="navbar brand-custom">
+    <a id="nav-top" class="navbar-brand" href="#">
+        <img height="40%" width="40%" class="logo" src="/img/leafMain.svg" alt="logo not displaying properly">
+    </a>
+</nav>
   <div id="content">
-    <p><i>Only the gas vehicle boolean is editable</i></p>
-    <!-- <table class= "table table-striped table-hover table-dark table-striped" id="users">
-
-      </table> -->
+    <p><i>a user's ID must be unique</i></p>
     <div id="container">
 
     </div>
     <form>
       <fieldset>
-        <legend>Add a User</legend>
+        <legend id="caption">Add a User:</legend>
+        <br>
         <input type="text" placeholder="id" id="userID" />
         <input type="text" placeholder="name" id="userName" />
         <input type="text" placeholder="location" id="location" />
         <input type="text" placeholder="gas vehicle" id="gasBool" />
         <input type="text" placeholder="emission" id="emission" />
-        <input type="button" id="submit-btn" value="Submit" />
-      </fieldset>
-      <fieldset>
-        <legend>Delete All Customers (use with caution!)</legend>
-        <input type="button" id="deleteAll" value="Delete All" />
+        <input type="button" id="submit-btn" class="btn btn-success" value="Submit" />
       </fieldset>
     </form>
     <p id="status"></p>

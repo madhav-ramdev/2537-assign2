@@ -14,7 +14,7 @@ $(document).ready(function () {
                 <th class="location_header"><span>Location</span></th>
                 <th class="gas_header"><span>Gas Vehicle (Yes or No)</span></th>
                 <th class="emissions_header"><span>Emission Count</span></th>
-                <th class="emissions_header"><span>Click to Delete</span></th>
+                <th class="delete_header"><span>Click to Delete</span></th>
                 </tr>`;
 
                 for (let i = 0; i < data.rows.length; i++) {
@@ -24,7 +24,7 @@ $(document).ready(function () {
                         "</span></td><td class='location'><span>" + row.location +
                         "</span></td><td class='gasBool'><span>" + row.gasBool +
                         "</span></td><td class='emission'><span>" + row.emission +
-                        "</span></td><td id = '" + row.userID + "' class='delBtn' onClick='clickFunction(" + row.userID + ")'><span>╳</span> </td></tr>");
+                        "</span></td><td class='delete'><button id = '" + row.userID + "' class = 'btn btn-danger delBtn'>╳</button> </td></tr>");
                 }
                 newRow += "</table>";
                 $("#container").html(newRow);
@@ -71,195 +71,195 @@ $(document).ready(function () {
 
     // --------------------------- DELETE FUNCTIONS START HERE -------------------------
 
-    $('#deleteRecord1').click(function (e) {
-        e.preventDefault();
+    // $('#deleteRecord1').click(function (e) {
+    //     e.preventDefault();
 
-        $.ajax({
-            url: "/delete-Record-1",
-            dataType: "json",
-            type: "POST",
-            success: function (data) {
-                console.log(data);
-                $("#status").html("Record 1 deleted.");
-                getUsers();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $("#p2").text(jqXHR.statusText);
-                console.log("ERROR:", jqXHR, textStatus, errorThrown);
-            }
-        });
-    });
+    //     $.ajax({
+    //         url: "/delete-Record-1",
+    //         dataType: "json",
+    //         type: "POST",
+    //         success: function (data) {
+    //             console.log(data);
+    //             $("#status").html("Record 1 deleted.");
+    //             getUsers();
+    //         },
+    //         error: function (jqXHR, textStatus, errorThrown) {
+    //             $("#p2").text(jqXHR.statusText);
+    //             console.log("ERROR:", jqXHR, textStatus, errorThrown);
+    //         }
+    //     });
+    // });
 
-    $('#deleteRecord2').click(function (e) {
-        e.preventDefault();
+    // $('#deleteRecord2').click(function (e) {
+    //     e.preventDefault();
 
-        $.ajax({
-            url: "/delete-Record-2",
-            dataType: "json",
-            type: "POST",
-            success: function (data) {
-                console.log(data);
-                $("#status").html("Record 2 deleted.");
-                getUsers();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $("#p2").text(jqXHR.statusText);
-                console.log("ERROR:", jqXHR, textStatus, errorThrown);
-            }
-        });
-    });
+    //     $.ajax({
+    //         url: "/delete-Record-2",
+    //         dataType: "json",
+    //         type: "POST",
+    //         success: function (data) {
+    //             console.log(data);
+    //             $("#status").html("Record 2 deleted.");
+    //             getUsers();
+    //         },
+    //         error: function (jqXHR, textStatus, errorThrown) {
+    //             $("#p2").text(jqXHR.statusText);
+    //             console.log("ERROR:", jqXHR, textStatus, errorThrown);
+    //         }
+    //     });
+    // });
 
-    $('#deleteRecord3').click(function (e) {
-        e.preventDefault();
+    // $('#deleteRecord3').click(function (e) {
+    //     e.preventDefault();
 
-        $.ajax({
-            url: "/delete-Record-3",
-            dataType: "json",
-            type: "POST",
-            success: function (data) {
-                console.log(data);
-                $("#status").html("Record 3 deleted.");
-                getUsers();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $("#p2").text(jqXHR.statusText);
-                console.log("ERROR:", jqXHR, textStatus, errorThrown);
-            }
-        });
-    });
+    //     $.ajax({
+    //         url: "/delete-Record-3",
+    //         dataType: "json",
+    //         type: "POST",
+    //         success: function (data) {
+    //             console.log(data);
+    //             $("#status").html("Record 3 deleted.");
+    //             getUsers();
+    //         },
+    //         error: function (jqXHR, textStatus, errorThrown) {
+    //             $("#p2").text(jqXHR.statusText);
+    //             console.log("ERROR:", jqXHR, textStatus, errorThrown);
+    //         }
+    //     });
+    // });
 
-    $('#deleteRecord4').click(function (e) {
-        e.preventDefault();
+    // $('#deleteRecord4').click(function (e) {
+    //     e.preventDefault();
 
-        $.ajax({
-            url: "/delete-Record-4",
-            dataType: "json",
-            type: "POST",
-            success: function (data) {
-                console.log(data);
-                $("#status").html("Record 4 deleted.");
-                getUsers();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $("#p2").text(jqXHR.statusText);
-                console.log("ERROR:", jqXHR, textStatus, errorThrown);
-            }
-        });
-    });
+    //     $.ajax({
+    //         url: "/delete-Record-4",
+    //         dataType: "json",
+    //         type: "POST",
+    //         success: function (data) {
+    //             console.log(data);
+    //             $("#status").html("Record 4 deleted.");
+    //             getUsers();
+    //         },
+    //         error: function (jqXHR, textStatus, errorThrown) {
+    //             $("#p2").text(jqXHR.statusText);
+    //             console.log("ERROR:", jqXHR, textStatus, errorThrown);
+    //         }
+    //     });
+    // });
 
-    $('#deleteRecord5').click(function (e) {
-        e.preventDefault();
+    // $('#deleteRecord5').click(function (e) {
+    //     e.preventDefault();
 
-        $.ajax({
-            url: "/delete-Record-5",
-            dataType: "json",
-            type: "POST",
-            success: function (data) {
-                console.log(data);
-                $("#status").html("Record 5 deleted.");
-                getUsers();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $("#p2").text(jqXHR.statusText);
-                console.log("ERROR:", jqXHR, textStatus, errorThrown);
-            }
-        });
-    });
+    //     $.ajax({
+    //         url: "/delete-Record-5",
+    //         dataType: "json",
+    //         type: "POST",
+    //         success: function (data) {
+    //             console.log(data);
+    //             $("#status").html("Record 5 deleted.");
+    //             getUsers();
+    //         },
+    //         error: function (jqXHR, textStatus, errorThrown) {
+    //             $("#p2").text(jqXHR.statusText);
+    //             console.log("ERROR:", jqXHR, textStatus, errorThrown);
+    //         }
+    //     });
+    // });
 
-    $('#deleteRecord6').click(function (e) {
-        e.preventDefault();
+    // $('#deleteRecord6').click(function (e) {
+    //     e.preventDefault();
 
-        $.ajax({
-            url: "/delete-Record-6",
-            dataType: "json",
-            type: "POST",
-            success: function (data) {
-                console.log(data);
-                $("#status").html("Record 6 deleted.");
-                getUsers();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $("#p2").text(jqXHR.statusText);
-                console.log("ERROR:", jqXHR, textStatus, errorThrown);
-            }
-        });
-    });
+    //     $.ajax({
+    //         url: "/delete-Record-6",
+    //         dataType: "json",
+    //         type: "POST",
+    //         success: function (data) {
+    //             console.log(data);
+    //             $("#status").html("Record 6 deleted.");
+    //             getUsers();
+    //         },
+    //         error: function (jqXHR, textStatus, errorThrown) {
+    //             $("#p2").text(jqXHR.statusText);
+    //             console.log("ERROR:", jqXHR, textStatus, errorThrown);
+    //         }
+    //     });
+    // });
 
-    $('#deleteRecord7').click(function (e) {
-        e.preventDefault();
+    // $('#deleteRecord7').click(function (e) {
+    //     e.preventDefault();
 
-        $.ajax({
-            url: "/delete-Record-7",
-            dataType: "json",
-            type: "POST",
-            success: function (data) {
-                console.log(data);
-                $("#status").html("Record 7 deleted.");
-                getUsers();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $("#p2").text(jqXHR.statusText);
-                console.log("ERROR:", jqXHR, textStatus, errorThrown);
-            }
-        });
-    });
+    //     $.ajax({
+    //         url: "/delete-Record-7",
+    //         dataType: "json",
+    //         type: "POST",
+    //         success: function (data) {
+    //             console.log(data);
+    //             $("#status").html("Record 7 deleted.");
+    //             getUsers();
+    //         },
+    //         error: function (jqXHR, textStatus, errorThrown) {
+    //             $("#p2").text(jqXHR.statusText);
+    //             console.log("ERROR:", jqXHR, textStatus, errorThrown);
+    //         }
+    //     });
+    // });
 
-    $('#deleteRecord8').click(function (e) {
-        e.preventDefault();
+    // $('#deleteRecord8').click(function (e) {
+    //     e.preventDefault();
 
-        $.ajax({
-            url: "/delete-Record-8",
-            dataType: "json",
-            type: "POST",
-            success: function (data) {
-                console.log(data);
-                $("#status").html("Record 8 deleted.");
-                getUsers();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $("#p2").text(jqXHR.statusText);
-                console.log("ERROR:", jqXHR, textStatus, errorThrown);
-            }
-        });
-    });
+    //     $.ajax({
+    //         url: "/delete-Record-8",
+    //         dataType: "json",
+    //         type: "POST",
+    //         success: function (data) {
+    //             console.log(data);
+    //             $("#status").html("Record 8 deleted.");
+    //             getUsers();
+    //         },
+    //         error: function (jqXHR, textStatus, errorThrown) {
+    //             $("#p2").text(jqXHR.statusText);
+    //             console.log("ERROR:", jqXHR, textStatus, errorThrown);
+    //         }
+    //     });
+    // });
 
-    $('#deleteRecord9').click(function (e) {
-        e.preventDefault();
+    // $('#deleteRecord9').click(function (e) {
+    //     e.preventDefault();
 
-        $.ajax({
-            url: "/delete-Record-9",
-            dataType: "json",
-            type: "POST",
-            success: function (data) {
-                console.log(data);
-                $("#status").html("Record 9 deleted.");
-                getUsers();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $("#p2").text(jqXHR.statusText);
-                console.log("ERROR:", jqXHR, textStatus, errorThrown);
-            }
-        });
-    });
+    //     $.ajax({
+    //         url: "/delete-Record-9",
+    //         dataType: "json",
+    //         type: "POST",
+    //         success: function (data) {
+    //             console.log(data);
+    //             $("#status").html("Record 9 deleted.");
+    //             getUsers();
+    //         },
+    //         error: function (jqXHR, textStatus, errorThrown) {
+    //             $("#p2").text(jqXHR.statusText);
+    //             console.log("ERROR:", jqXHR, textStatus, errorThrown);
+    //         }
+    //     });
+    // });
 
-    $('#deleteRecord10').click(function (e) {
-        e.preventDefault();
+    // $('#deleteRecord10').click(function (e) {
+    //     e.preventDefault();
 
-        $.ajax({
-            url: "/delete-Record-10",
-            dataType: "json",
-            type: "POST",
-            success: function (data) {
-                console.log(data);
-                $("#status").html("Record 10 deleted.");
-                getUsers();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $("#p2").text(jqXHR.statusText);
-                console.log("ERROR:", jqXHR, textStatus, errorThrown);
-            }
-        });
-    });
+    //     $.ajax({
+    //         url: "/delete-Record-10",
+    //         dataType: "json",
+    //         type: "POST",
+    //         success: function (data) {
+    //             console.log(data);
+    //             $("#status").html("Record 10 deleted.");
+    //             getUsers();
+    //         },
+    //         error: function (jqXHR, textStatus, errorThrown) {
+    //             $("#p2").text(jqXHR.statusText);
+    //             console.log("ERROR:", jqXHR, textStatus, errorThrown);
+    //         }
+    //     });
+    // });
 
     $('#container').on('click', 'span', function () {
 
@@ -387,49 +387,33 @@ $(document).ready(function () {
         }
     });
 
-    $('#container').on('click', 'span', function () {
+    $(document).on('click', '.delBtn', function(){
 
-        if ($(this).parent().attr('class') === 'emission') {
-            let spanText = $(this).text();
-            let td = $(this).parent();
-            let input = $("<input type='text' value='" + spanText + "'>");
+        let deleteButton = $(this);
 
-            td.html(input);
-            $(input).keyup(function (e) {
-                let val = null;
-                let span = null;
-                if (e.which == 13) {
-                    val = $(input).val();
-                    span = $("<span>" + val + "</span>");
-                    td.html(span);
+        console.log(deleteButton.attr('id'));
 
-                    console.log(td.parent().find("[class='userID']")[0]);
+        let dataToServer = {
+            userID: deleteButton.attr('id')
+        };
+        // id: td.parent().find("[class='userID']").html()
+        $.ajax({
+            url: "/delete-user",
+            dataType: "json",
+            type: "POST",
+            data: dataToServer,
+            success: function (data) {
+                console.log(data);
+                $("#status").html("Record Deleted");
+                getUsers();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $("#p2").text(jqXHR.statusText);
+                console.log("ERROR:", jqXHR, textStatus, errorThrown);
+            }
 
-                    let dataToServer = {
-                        id: td.parent().find("[class='userID']").html(),
-                        emission: val
-                    };
-
-                    $.ajax({
-                        url: "update-userEmission",
-                        dataType: "json",
-                        type: "POST",
-                        data: dataToServer,
-                        success: function (data) {
-                            $("#requestStatus").html("The data was updated on the database.");
-                            getUsers();
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            $("#p2").text(jqXHR.statusText);
-                            console.log("ERROR:", jqXHR, textStatus, errorThrown);
-                        }
-                    });
-                }
-            });
-        }
+        });
     });
-
-    // $('#container').on('click', 'span', function () {
 
     //     if ($(this).parent().attr('class') === 'gasBool') {
     //         let spanText = $(this).text();
@@ -473,47 +457,92 @@ $(document).ready(function () {
 
     // $('#submit-btn').click(function (e) {
     //     e.preventDefault(); 
-    function clickFunction(clicked_id) {
-        let variableX = clicked_id;
+    // function clickFunction(clicked_id) {
+    //     let variableX = clicked_id;
 
-        // if ($(this).parent().attr('class') === 'delBtn') {
-        //     // let spanText = $(this).text();
-        //     let td = $(this).parent();
-        //     // let input = $("<input type='button' value='delete'>");
+    // if ($(this).parent().attr('class') === 'delBtn') {
+    //     // let spanText = $(this).text();
+    //     let td = $(this).parent();
+    //     // let input = $("<input type='button' value='delete'>");
 
-        //     // td.html(input);
-        //     $(this).keyup(function (e) {
-        //         let val = null;
-        //         let span = null;
-        // if (e.which == 46) {
-        // val = $(input).val();
-        // span = $("<span>" + val + "</span>");
-        // td.html(span);
+    //     // td.html(input);
+    //     $(this).keyup(function (e) {
+    //         let val = null;
+    //         let span = null;
+    // if (e.which == 46) {
+    // val = $(input).val();
+    // span = $("<span>" + val + "</span>");
+    // td.html(span);
 
-        // console.log(td.parent().find("[class='userID']")[0]);
+    // console.log(td.parent().find("[class='userID']")[0]);
 
-        let dataToServer = {
-            id: variableX
-            // id: this.parent().find("[class='delBtn']"),
-            // gasBool: val
-        };
+    // let dataToServer = {
+    //     id: variableX
+    // id: this.parent().find("[class='delBtn']"),
+    // gasBool: val
+    // };
 
-        $.ajax({
-            url: "delete-user",
-            dataType: "json",
-            type: "POST",
-            data: dataToServer,
-            success: function (data) {
-                $("#requestStatus").html("The data was deleted on the database.");
-                getUsers();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $("#p2").text(jqXHR.statusText);
-                console.log("ERROR:", jqXHR, textStatus, errorThrown);
-            }
-        });
-        // }
-        // });
-        // }
-    };
+    // $.ajax({
+    //     url: "delete-user",
+    //     dataType: "json",
+    //     type: "POST",
+    //     data: dataToServer,
+    //     success: function (data) {
+    //         $("#requestStatus").html("The data was deleted on the database.");
+    //         getUsers();
+    //     },
+    //     error: function (jqXHR, textStatus, errorThrown) {
+    //         $("#p2").text(jqXHR.statusText);
+    //         console.log("ERROR:", jqXHR, textStatus, errorThrown);
+    //     }
+    // });
+    // }
+    // });
+    // }
+    // };
+
+
+    $('#container').on('click', 'span', function () {
+
+        if ($(this).parent().attr('class') === 'emission') {
+            let spanText = $(this).text();
+            let td = $(this).parent();
+            let input = $("<input type='text' value='" + spanText + "'>");
+
+            td.html(input);
+            $(input).keyup(function (e) {
+                let val = null;
+                let span = null;
+                if (e.which == 13) {
+                    val = $(input).val();
+                    span = $("<span>" + val + "</span>");
+                    td.html(span);
+
+                    console.log(td.parent().find("[class='userID']")[0]);
+
+                    let dataToServer = {
+                        id: td.parent().find("[class='userID']").html(),
+                        emission: val
+                    };
+
+                    $.ajax({
+                        url: "update-userEmission",
+                        dataType: "json",
+                        type: "POST",
+                        data: dataToServer,
+                        success: function (data) {
+                            $("#requestStatus").html("The data was updated on the database.");
+                            getUsers();
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            $("#p2").text(jqXHR.statusText);
+                            console.log("ERROR:", jqXHR, textStatus, errorThrown);
+                        }
+                    });
+                }
+            });
+        }
+    });
+
+
 });

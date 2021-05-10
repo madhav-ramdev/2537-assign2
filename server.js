@@ -7,7 +7,7 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 
 
-const msg404 = 'Err!! We could not find what you are looking for. Please try again';
+const msg404 = 'Not Found';
 
 app.use('/js', express.static('client/js'))
 app.use('/css', express.static('client/css'))
@@ -19,7 +19,6 @@ app.use('/img', express.static('client/img'))
 app.get('/', function (req, res) {
 
 
-  // Let's build the DB if it doesn't exist
   const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -28,24 +27,24 @@ app.get('/', function (req, res) {
   });
 
   const createDBAndTables = `CREATE DATABASE IF NOT EXISTS assignment;
-        use assignment;
-        CREATE TABLE IF NOT EXISTS appUser (
-        userID int NOT NULL AUTO_INCREMENT,
-        userName varchar(40),
-        location varchar(30),
-        gasBool varchar(30),
-        emission int(10),
-        PRIMARY KEY (userID));
-        INSERT INTO appUser (userName, location, gasBool, emission) values ('madhav', 'vancouver', 'no', '23');
-        INSERT INTO appUser (userName, location, gasBool, emission) values ('sam', 'burnaby', 'yes', '27');
-        INSERT INTO appUser (userName, location, gasBool, emission) values ('john', 'surrey', 'no', '12');
-        INSERT INTO appUser (userName, location, gasBool, emission) values ('harleen', 'vancouver', 'no', '25');
-        INSERT INTO appUser (userName, location, gasBool, emission) values ('aaron', 'richmond', 'yes', '32');
-        INSERT INTO appUser (userName, location, gasBool, emission) values ('dustin', 'north vancouer', 'yes', '23');
-        INSERT INTO appUser (userName, location, gasBool, emission) values ('henry', 'vanouver', 'yes', '14');
-        INSERT INTO appUser (userName, location, gasBool, emission) values ('scott', 'downtown', 'no', '87');
-        INSERT INTO appUser (userName, location, gasBool, emission) values ('smith', 'burnaby', 'no', '27');
-        INSERT INTO appUser (userName, location, gasBool, emission) values ('justin', 'surrey', 'yes', '23');`;
+  use assignment;
+  CREATE TABLE IF NOT EXISTS appUser (
+  userID varchar(15) NOT NULL,
+  userName varchar(20),
+  location varchar(30),
+  gasBool varchar(30),
+  emission int(10),
+  PRIMARY KEY (userID));
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('mhav1', 'madhav', 'vancouver', 'no', '23');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('slando', 'sam', 'burnaby', 'yes', '27');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('jryue', 'john', 'surrey', 'no', '12');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('hsaini123', 'harleen', 'vancouver', 'no', '25');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('aFerg101', 'aaron', 'richmond', 'yes', '32');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('canucksfan7', 'dustin', 'north vancouer', 'yes', '23');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('ecoHenry', 'henry', 'vanouver', 'yes', '14');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('scottVan1996', 'scott', 'downtown', 'no', '87');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('smithy12', 'smith', 'burnaby', 'no', '27');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('thisJustIn', 'justin', 'surrey', 'yes', '23');`;
 
   connection.connect();
   connection.query(createDBAndTables, function (error, results, fields) {
@@ -86,15 +85,13 @@ app.get('/get-users', function (req, res) {
 
 });
 
-// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
   extended: false
 }));
 
-// parse application/json
 app.use(bodyParser.json());
 
-// Notice that this is a 'POST'
+
 app.post('/add-user', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
@@ -121,33 +118,6 @@ app.post('/add-user', function (req, res) {
       res.send({
         status: "success",
         msg: "Recorded added."
-      });
-
-    });
-  connection.end();
-
-});
-
-app.post('/delete-all-users', function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
-
-  let connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'assignment'
-  });
-  connection.connect();
-  // REALLY A DUMB THING TO DO, BUT JUST SHOWING YOU CAN
-  connection.query('DELETE FROM appUser',
-    function (error, results, fields) {
-      if (error) {
-        throw error;
-      }
-      //console.log('Rows returned are: ', results);
-      res.send({
-        status: "success",
-        msg: "Recorded all deleted."
       });
 
     });
@@ -266,6 +236,7 @@ app.post('/update-userEmission', function (req, res) {
 
 });
 
+
 app.post('/delete-user', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
@@ -283,7 +254,7 @@ app.post('/delete-user', function (req, res) {
       if (error) {
         throw error;
       }
-      // console.log('Rows returned are: ', results);
+       console.log('Rows returned are: ', results);
       res.send({
         status: "success",
         msg: "Recorded deleted."
