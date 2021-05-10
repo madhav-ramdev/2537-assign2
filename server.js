@@ -35,7 +35,16 @@ app.get('/', function (req, res) {
   gasBool varchar(30),
   emission int(10),
   PRIMARY KEY (userID));
-`;
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('mhav1', 'madhav', 'vancouver', 'no', '23');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('slando', 'sam', 'burnaby', 'yes', '27');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('jryue', 'john', 'surrey', 'no', '12');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('hsaini123', 'harleen', 'vancouver', 'no', '25');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('aFerg101', 'aaron', 'richmond', 'yes', '32');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('canucksfan7', 'dustin', 'north vancouer', 'yes', '23');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('ecoHenry', 'henry', 'vanouver', 'yes', '14');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('scottVan1996', 'scott', 'downtown', 'no', '87');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('smithy12', 'smith', 'burnaby', 'no', '27');
+  INSERT IGNORE INTO appUser (userID, userName, location, gasBool, emission) values ('thisJustIn', 'justin', 'surrey', 'yes', '23');`;
 
   connection.connect();
   connection.query(createDBAndTables, function (error, results, fields) {
